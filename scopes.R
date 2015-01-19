@@ -17,15 +17,15 @@ new_counter <- function() {
 	i <- 0  # this variable will be overshadowed
 	function() {
 		i <- 42  # overshadows the parent scope variable
-		i <<- i + 1  # modifies current scope variable
+		i <<- i + 1  # modifies parent scope variable
 		i  # prints current scope variable
 	}
 }
 counter_one <- new_counter()
 counter_two <- new_counter()
-counter_one()  # [1] 43
-counter_one()  # [1] 43
-counter_two()  # [1] 43
+counter_one()  # [1] 42
+counter_one()  # [1] 42
+counter_two()  # [1] 42
 
 # modified example from 02.10 Scoping Rules: R Scoping Rules
 y <- 10
